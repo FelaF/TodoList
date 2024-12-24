@@ -1,10 +1,39 @@
-import { createToDo, createToDoList} from "./index.js";
+const createToDo = function(title, description, dueDate){
+    let priority = 0
+    let checked = false
+    const changeCheck = () => {
+        checked = !checked
+    }
+    const getCheck = () => checked
+    const setPriority = function(priorityValue){
+        priority = priorityValue
+    }
+    const getPriority = () => {
+        return priority
+    }
+    
+    return {title, description, dueDate, getCheck, changeCheck, setPriority, getPriority}
+}
 
-gettingGroceries = createToDo("Groceries", "milk, eggs, and bread","12-25-25")
-takeOutTrash = createToDo("Trash", "Take out three bags of trash","12-26-25")
+const createToDoList = () => {
+    let tasks = []
+    const addTask = function(task){
+        task.setPriority(tasks.length + 1) 
+        tasks.push(task)
+    }
+    const deleteTask = function(title){
+        tasks = tasks.filter(task => task.title !== title)
+    }
+    const sortTasksByPriority = () => {
+        tasks.sort((a, b) => a.getPriority() - b.getPriority())
+    }
+    const displayList = () => {
+        tasks.forEach(task => {
+            console.log(task.title);
+            console.log(task.getPriority());
+        });
+    }
+    return {addTask, deleteTask, sortTasksByPriority, displayList}
+}
 
-DecTDL = createToDoList()
-DecTDL.addTask(gettingGroceries)
-takeOutTrash.setPriority(1)
-DecTDL.addTask(takeOutTrash)
-DecTDL.displayList()
+export{createToDo,createToDoList}
