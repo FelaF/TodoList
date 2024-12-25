@@ -24,11 +24,6 @@
             justify-content: space-between;
             align-items: center;
         }
-        .task-controls button {
-            margin-left: 10px;
-            padding: 5px 10px;
-            cursor: pointer;
-        }
         #new-task-form {
             margin-bottom: 20px;
         }
@@ -39,16 +34,20 @@
     </style>
 </head>
 <body>
-    <h1>To-Do List</h1>
+        <h1>Projects</h1>
 
-    <!-- Form for adding new tasks -->
-    <form id="new-task-form">
-        <input type="text" id="new-task" placeholder="Enter new task" required>
-        <button type="submit">Add Task</button>
+    <form id="new-project-form">
+        <input type="text" id="new-project" placeholder="Project Name" required>
+        <button type="submit">Begin New Project</button>
     </form>
 
+    <div id="Projects">
+            
+    </div>
+
+    
+
     <!-- List to display tasks -->
-    <ul id="todo-list"></ul>
 
     <script type="module" src="index.js"></script>
 </body>

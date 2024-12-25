@@ -1,12 +1,33 @@
 import {createToDo, createToDoList} from "./todo.js"
 
-console.log(createToDo, createToDoList)
+document.getElementById('new-project-form').addEventListener("submit", function (e) {
+    e.preventDefault();
+    const projects = document.getElementById('Projects');
+    
+    const projTitle = document.getElementById('new-project').value;
+    const titleElement = document.createElement('h2');
+    titleElement.textContent = projTitle;
+    
+    const newTodo = document.createElement('form');
+    newTodo.setAttribute("id", `todo-form-${projTitle}`);
+    
+    const formContainer = document.createElement('div');
+    formContainer.appendChild(newTodo);
 
-gettingGroceries = createToDo("Groceries", "milk, eggs, and bread","12-25-25")
-takeOutTrash = createToDo("Trash", "Take out three bags of trash","12-26-25")
+    projects.appendChild(titleElement);
+    projects.appendChild(formContainer);
+    
+    const todoInput = document.createElement('input');
+    todoInput.type = 'text';
+    todoInput.name = 'todo';
+    todoInput.placeholder = 'Enter a todo item';
+    newTodo.appendChild(todoInput);
 
-DecTDL = createToDoList()
-DecTDL.addTask(gettingGroceries)
-takeOutTrash.setPriority(1)
-DecTDL.addTask(takeOutTrash)
-DecTDL.displayList()
+    const submitButton = document.createElement('button');
+    submitButton.type = 'submit';
+    submitButton.textContent = 'Add Todo';
+    newTodo.appendChild(submitButton);
+
+});
+
+
