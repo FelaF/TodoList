@@ -17,15 +17,38 @@ document.getElementById('new-project-form').addEventListener("submit", function 
     projects.appendChild(titleElement);
     projects.appendChild(formContainer);
     
+    const todoListInput = document.createElement('input');
+    todoListInput.type = 'text';
+    todoListInput.name = 'todo';
+    todoListInput.placeholder = 'Enter a todo list title';
+    newTodo.appendChild(todoListInput);
+
     const todoInput = document.createElement('input');
     todoInput.type = 'text';
     todoInput.name = 'todo';
-    todoInput.placeholder = 'Enter a todo item';
-    newTodo.appendChild(todoInput);
+    todoInput.placeholder = 'Enter a todo';
+    
+    const todoInputButton = document.createElement("button");
+    todoInputButton.type = 'submit';
+    todoInputButton.textContent = "Add Todo"
 
     const submitButton = document.createElement('button');
     submitButton.type = 'submit';
-    submitButton.textContent = 'Add Todo';
+    submitButton.textContent = 'Add Todo List';
+
+    
+    submitButton.addEventListener("click", function (e){
+        e.preventDefault();
+        const newProjectForm = document.getElementById(`todo-form-${projTitle}`);
+        newProjectForm.innerHTML = `${todoListInput.value} `;
+        document.appendChild(todoInput);
+        document.appendChild(todoInputButton);
+        todoInputButton.addEventListener("submit", function(e){
+            e.preventDefault()
+            
+        
+
+    });
     newTodo.appendChild(submitButton);
 
 });

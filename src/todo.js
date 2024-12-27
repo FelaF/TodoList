@@ -11,11 +11,12 @@ const createToDo = function(title, description, dueDate){
     const getPriority = () => {
         return priority
     }
+    const dueDateObject = new Date(dueDate)
     
-    return {title, description, dueDate, getCheck, changeCheck, setPriority, getPriority}
+    return {title, description, dueDate, dueDateObject, getCheck, changeCheck, setPriority, getPriority}
 }
 
-const createToDoList = () => {
+const createToDoList = (name) => {
     let tasks = []
     const addTask = function(task){
         task.setPriority(tasks.length + 1) 
@@ -29,11 +30,11 @@ const createToDoList = () => {
     }
     const displayList = () => {
         tasks.forEach(task => {
-            console.log(task.title);
-            console.log(task.getPriority());
+            console.log(`TodoList - ${this.name}`);
+            console.log(`${task.title} - ${task.getPriority()}`);
         });
     }
-    return {addTask, deleteTask, sortTasksByPriority, displayList}
+    return {name, addTask, deleteTask, sortTasksByPriority, displayList}
 }
 
 export{createToDo,createToDoList}
